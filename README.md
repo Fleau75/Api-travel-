@@ -22,7 +22,7 @@ curl -X POST http://localhost:3000/auth/login \
 
 Récupérer les informations de l’utilisateur connecté (nécessite un token) :
 
-curl -X GET http://localhost:3000/users/me \
+curl -X GET http://localhost:3000/auth/me \
  -H "Authorization: Bearer YOUR_JWT_TOKEN"
 
 Lister les voyages de l’utilisateur connecté :
@@ -37,24 +37,19 @@ curl -X POST http://localhost:3000/trips \
  -H "Content-Type: application/json" \
  -d '{
 "destination": "Paris",
-"start_date": "2025-06-01",
-"end_date": "2025-06-10"
+"startDate": "2025-06-01 12:00:00",
+"endDate": "2025-06-10 12:00:00"
 }'
-
-Récupérer un voyage spécifique :
-
-curl -X GET http://localhost:3000/trips/TRIP_ID \
- -H "Authorization: Bearer YOUR_JWT_TOKEN"
 
 3.  Items des voyages :
 
-curl -X POST http://localhost:3000/trips/TRIP_ID/items \
+curl -X POST http://localhost:3000/items/TRIP_ID/ \
  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
  -H "Content-Type: application/json" \
  -d '{
 "name": "Chaussures de randonnée",
 "quantity": 1,
-"status": "à prendre"
+"status": "not taken"
 }'
 
 Modifier un item :
